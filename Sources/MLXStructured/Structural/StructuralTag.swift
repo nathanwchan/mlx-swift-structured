@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import JSONSchema
 
 public struct AnyEncodable: Encodable {
     
@@ -152,26 +151,6 @@ public struct RegexFormat: Encodable {
     enum CodingKeys: CodingKey {
         case type
         case pattern
-    }
-}
-
-public struct JSONSchemaFormat: Encodable {
-    
-    public let schema: JSONSchema
-    
-    public init(schema: JSONSchema) {
-        self.schema = schema
-    }
-    
-    public func encode(to encoder: any Encoder) throws {
-        var container  = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode("json_schema", forKey: .type)
-        try container.encode(schema, forKey: .schema)
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case type
-        case schema = "json_schema"
     }
 }
 

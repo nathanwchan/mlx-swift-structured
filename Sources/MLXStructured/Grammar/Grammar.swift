@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import JSONSchema
 
 public enum Grammar {
     case ebnf(String)

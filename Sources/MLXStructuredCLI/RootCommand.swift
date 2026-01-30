@@ -17,11 +17,7 @@ struct RootCommand: AsyncParsableCommand {
         commandName: "mlx-structured",
         abstract: "Examples of different structured output generation.",
         subcommands: [
-            CodableExample.self,
-            GenerableExample.self,
-            GenerableStreamExample.self,
             StructuralExample.self,
-            ToolCallingExample.self
         ]
     )
 }

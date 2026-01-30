@@ -11,7 +11,6 @@ let package = Package(
         .package(url: "https://github.com/ml-explore/mlx-swift", from: "0.25.6"),
         .package(url: "https://github.com/ml-explore/mlx-swift-lm", from: "2.29.2"),
         .package(url: "https://github.com/huggingface/swift-transformers", from: "1.1.0"),
-        .package(url: "https://github.com/petrukha-ivan/swift-json-schema", from: "2.0.2"),
         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.4.0"),
     ],
     targets: [
@@ -45,7 +44,6 @@ let package = Package(
                 .target(name: "CMLXStructured"),
                 .product(name: "MLX", package: "mlx-swift"),
                 .product(name: "MLXLMCommon", package: "mlx-swift-lm"),
-                .product(name: "JSONSchema", package: "swift-json-schema")
             ]
         ),
         // CLI for testing
