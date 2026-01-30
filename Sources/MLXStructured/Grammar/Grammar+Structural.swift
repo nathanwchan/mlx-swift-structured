@@ -10,8 +10,16 @@ import Foundation
 public extension Grammar {
     init(@FormatBuilder _ content: () -> Encodable) throws {
         let tag = StructuralTag(format: content())
-        let data = try JSONEncoder.sorted.encode(tag)
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.sortedKeys]
+        let data = try encoder.encode(tag)
         let string = String(decoding: data, as: UTF8.self).sanitizedSchema
         self = Grammar.structural(string)
+    }
+}
+
+private extension String {
+    var sanitizedSchema: String {
+        replacingOccurrences(of: "__[0-9]+__", with: "", options: .regularExpression)
     }
 }
